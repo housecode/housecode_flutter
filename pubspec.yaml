@@ -11,16 +11,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  modal_progress_hud_alt: ^1.0.0
+  cupertino_icons: ^1.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  modal_progress_hud_alt: ^1.0.0
-  font_awesome_flutter: ^9.1.0
-  cupertino_icons: ^1.0.2
-  collection: ^1.15.0
-  jiffy: ^4.1.0
-  intl: ^0.17.0
 
 flutter:
   uses-material-design: true
