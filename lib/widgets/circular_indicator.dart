@@ -8,6 +8,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// circular indicator based on platform style
 // ignore: must_be_immutable
 class CircularIndicator extends StatelessWidget {
   /// android only

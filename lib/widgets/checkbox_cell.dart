@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'checkbox.dart';
 import 'view_cell.dart';
 
+/// view cell with checkbox
 // ignore: must_be_immutable
 class CheckboxCell extends StatefulWidget {
   CheckboxCell({

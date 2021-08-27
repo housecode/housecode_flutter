@@ -7,6 +7,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// show message dialog
 void showMessage(BuildContext context, String message) {
   showDialog(
     context: context,
@@ -28,6 +29,7 @@ void showMessage(BuildContext context, String message) {
   );
 }
 
+/// show confirm dialog
 void showConfirm(BuildContext context, String message, Function onAccept,
     {Function? onCancel}) async {
   await showConfirmation(context, message, onAccept, onCancel: onCancel);
@@ -67,6 +69,7 @@ Future<T?> showConfirmation<T>(
 
 typedef PickerItemSelected = void Function(int index);
 
+/// show picker dialog with List of string items
 void showPicker(
   BuildContext context,
   List<String> items, {

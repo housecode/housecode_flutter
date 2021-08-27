@@ -7,6 +7,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// view cell with selected icon
 // ignore: must_be_immutable
 class SelectableViewCell extends StatelessWidget {
   SelectableViewCell({

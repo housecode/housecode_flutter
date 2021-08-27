@@ -1,3 +1,6 @@
+## 1.0.1
+* Add example and update descriptions/comments
+
 ## 1.0.0+1
 * Add repository url
 

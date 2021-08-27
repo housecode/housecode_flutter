@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/License-MIT-yellow.svg"/>
 </a>
 
-A set of extensions and widgets by Housecode.Net
+A set of extensions and widgets by Housecode.Net to simplify some function and re-useable widgets.
 
 ## Features
 * Add some extensions
@@ -32,7 +32,7 @@ add this line to pubspec.yaml
 
    dependencies:
 
-    housecode: ^1.0.0+1
+    housecode: ^1.0.1
 
 
 ```

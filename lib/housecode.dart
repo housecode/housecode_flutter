@@ -8,23 +8,31 @@ library housecode;
 
 import 'package:flutter/foundation.dart';
 
-String toString(dynamic value) {
-  if (value == null) return "";
-  if (value is String) return value;
-  return "$value";
-}
+extension DynamicExtension on dynamic {
+  /// parse dynamic to int used when parsing json
+  int toInt() {
+    var value = this;
+    if (value == null) return 0;
+    if (value is int) return value;
+    return int.parse(value);
+  }
 
-int toInt(dynamic value) {
-  if (value == null) return 0;
-  if (value is int) return value;
-  return int.parse(value);
+  /// parse dynamic to int used when parsing json
+  double toDouble() {
+    var value = this;
+    if (value == null) return 0;
+    if (value is double) return value;
+    return double.parse(value);
+  }
 }
 
 extension StringExtension on String {
+  /// capitalize first letter of string
   String capitalize() {
     return "${this[0].toUpperCase()}${this.substring(1)}";
   }
 
+  /// remove all HTML tags from a string
   String removeAllHtmlTags() {
     var htmlText = this;
     RegExp exp = RegExp(r"<[^>]*>", multiLine: true, caseSensitive: true);
@@ -33,6 +41,7 @@ extension StringExtension on String {
   }
 }
 
+/// notifier class property
 class Notifier<T> extends ChangeNotifier implements ValueListenable<T> {
   Notifier(this._value);
   T _value;

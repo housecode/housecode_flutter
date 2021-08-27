@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 import 'package:housecode/widgets/view_cell.dart';
 
+/// view cell for text only
 // ignore: must_be_immutable
 class TextCell extends StatefulWidget {
   TextCell({

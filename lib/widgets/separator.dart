@@ -6,6 +6,7 @@
 
 import 'package:flutter/cupertino.dart';
 
+/// separator for Listview.separated
 class Separator extends StatelessWidget {
   Separator({
     this.margin,

@@ -10,6 +10,7 @@ import 'package:modal_progress_hud_alt/modal_progress_hud_alt.dart';
 
 import 'package:housecode/widgets/circular_indicator.dart';
 
+/// modal loading dialog
 // ignore: must_be_immutable
 class LoadingDialog extends StatelessWidget {
   final Widget child;

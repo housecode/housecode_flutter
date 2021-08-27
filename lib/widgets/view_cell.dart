@@ -7,6 +7,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+/// view cell for Listview itemBuilder
 // ignore: must_be_immutable
 class ViewCell extends StatelessWidget {
   ViewCell({
