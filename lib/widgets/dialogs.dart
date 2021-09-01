@@ -75,6 +75,7 @@ void showPicker(
   List<String> items, {
   PickerItemSelected? itemSelected,
   PickerItemSelected? onDone,
+  String? title,
 }) {
   var selected = 0;
   var controller = FixedExtentScrollController();
@@ -91,29 +92,46 @@ void showPicker(
           mainAxisSize: MainAxisSize.max,
           children: [
             Container(
-              margin: EdgeInsets.only(right: 5, top: 5),
+              margin: EdgeInsets.only(
+                  right: 5, top: 5, left: title != null ? 5 : 0),
               color: Colors.white,
               width: double.infinity,
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: SizedBox(
-                  height: 35,
-                  width: 60,
-                  child: CupertinoButton(
-                    onPressed: () {
-                      Navigator.pop(ctx);
-                      if (onDone != null) onDone(selected);
-                    },
-                    padding: EdgeInsets.all(0),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Visibility(
+                    visible: title != null,
                     child: Text(
-                      "Done",
+                      title ?? "",
                       style: TextStyle(
-                        color: CupertinoColors.activeBlue,
+                        color: Colors.black,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                ),
+                  Expanded(child: Container()),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: SizedBox(
+                      height: 35,
+                      width: 60,
+                      child: CupertinoButton(
+                        onPressed: () {
+                          Navigator.pop(ctx);
+                          if (onDone != null) onDone(selected);
+                        },
+                        padding: EdgeInsets.all(0),
+                        child: Text(
+                          "Done",
+                          style: TextStyle(
+                            color: CupertinoColors.activeBlue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(

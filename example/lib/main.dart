@@ -1,8 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:housecode/housecode.dart';
-import 'package:housecode/widgets/loading_dialog.dart';
-import 'package:housecode/widgets/separator.dart';
-import 'package:housecode/widgets/text_cell.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,10 +9,19 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: <LocalizationsDelegate<dynamic>>[
+        DefaultMaterialLocalizations.delegate,
+        DefaultWidgetsLocalizations.delegate,
+        DefaultCupertinoLocalizations.delegate,
+      ],
       title: 'Housecode Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: CupertinoThemeData(
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: CupertinoColors.white,
+        primaryColor: CupertinoColors.systemBlue,
+        primaryContrastingColor: CupertinoColors.systemBlue,
       ),
       home: MyHomePage(title: 'Housecode Demo'),
     );
@@ -49,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
               actions: [
                 IconButton(
                   onPressed: () {
-                    print("debug");
+                    _showPicker();
                   },
                   icon: Icon(Icons.access_alarms),
                 ),
@@ -98,5 +105,16 @@ class _MyHomePageState extends State<MyHomePage> {
         _isASync = false;
       });
     });
+  }
+
+  void _showPicker() {
+    showPicker(
+      context,
+      List.generate(5, (index) => "Item number ${index + 1}"),
+      title: "Picker",
+      onDone: (index) {
+        showMessage(context, "Item number ${index + 1}");
+      },
+    );
   }
 }

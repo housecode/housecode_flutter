@@ -8,6 +8,17 @@ library housecode;
 
 import 'package:flutter/foundation.dart';
 
+// export internal widgets
+export 'widgets/checkbox.dart';
+export 'widgets/checkbox_cell.dart';
+export 'widgets/circular_indicator.dart';
+export 'widgets/dialogs.dart';
+export 'widgets/loading_dialog.dart';
+export 'widgets/selectable_view_cell.dart';
+export 'widgets/separator.dart';
+export 'widgets/text_cell.dart';
+export 'widgets/view_cell.dart';
+
 extension DynamicExtension on dynamic {
   /// parse dynamic to int used when parsing json
   int toInt() {
@@ -17,12 +28,22 @@ extension DynamicExtension on dynamic {
     return int.parse(value);
   }
 
+  /// replace null with default value
+  T coalesce<T>(T defaultValue) => this == null ? defaultValue : this;
+
   /// parse dynamic to int used when parsing json
   double toDouble() {
     var value = this;
     if (value == null) return 0;
     if (value is double) return value;
     return double.parse(value);
+  }
+
+  /// parse dynamic to string used when parsing json
+  String stringValue() {
+    if (this == null) return "";
+    if (this is String) return this;
+    return "$this";
   }
 }
 

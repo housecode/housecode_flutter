@@ -18,11 +18,15 @@ class TextCell extends StatefulWidget {
     this.onTap,
     this.titleColor,
     this.detailColor,
+    this.padding,
+    this.hasUneventRows = false,
   });
 
   final String title;
   late String? detail;
+  bool? hasUneventRows;
   late ValueChanged<ValueChanged<String>>? onTap;
+  EdgeInsetsGeometry? padding;
   Color? titleColor;
   Color? detailColor;
 
@@ -42,8 +46,9 @@ class _TextCellState extends State<TextCell> {
   @override
   Widget build(BuildContext context) {
     return ViewCell(
+      hasUneventRows: widget.hasUneventRows,
       showIcon: widget.onTap != null,
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: widget.padding ?? EdgeInsets.only(left: 10, right: 10),
       child: Container(
         padding: EdgeInsets.only(left: 2),
         child: Text(
