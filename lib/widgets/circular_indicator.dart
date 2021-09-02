@@ -31,6 +31,8 @@ class CircularIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
+      shadowColor: Colors.transparent,
       child: Platform.isIOS || (iosOnly ?? false)
           ? _cupertino(context)
           : _material(context),

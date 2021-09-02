@@ -32,7 +32,7 @@ add this line to pubspec.yaml
 
    dependencies:
 
-    housecode: ^1.0.2+1
+    housecode: ^1.0.2+2
 
 
 ```
