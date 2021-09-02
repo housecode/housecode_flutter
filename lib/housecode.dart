@@ -29,7 +29,13 @@ extension DynamicExtension on dynamic {
   }
 
   /// replace null with default value
-  T coalesce<T>(T defaultValue) => this == null ? defaultValue : this;
+  T coalesce<T>(T defaultValue) {
+    if (this is String) {
+      String? str = this;
+      return (str ?? "").isEmpty ? defaultValue : this;
+    }
+    return this == null ? defaultValue : this;
+  }
 
   /// parse dynamic to int used when parsing json
   double toDouble() {

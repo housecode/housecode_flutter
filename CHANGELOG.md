@@ -1,3 +1,7 @@
+## 1.0.2+1
+* Fix web support issue
+* Update LoadingDialog background
+
 ## 1.0.2
 * Export internal widgets to simplify package reference
 * Update show picker add title

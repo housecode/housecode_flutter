@@ -16,7 +16,6 @@ class LoadingDialog extends StatelessWidget {
   final Widget child;
   final bool isAsync;
 
-  double? opacity;
   String? loadingMessage;
   bool? useSafeArea;
 
@@ -24,7 +23,6 @@ class LoadingDialog extends StatelessWidget {
     Key? key,
     required this.child,
     required this.isAsync,
-    this.opacity,
     this.loadingMessage,
     this.useSafeArea = false,
   }) : super(key: key);
@@ -34,8 +32,9 @@ class LoadingDialog extends StatelessWidget {
     return ModalProgressHUD(
       inAsyncCall: isAsync,
       child: child,
+      opacity: 0.8,
       dismissible: false,
-      opacity: opacity == null ? 0.5 : opacity!,
+      color: CupertinoColors.black.withAlpha(204),
       progressIndicator:
           useSafeArea! ? SafeArea(child: _loading()) : _loading(),
     );
@@ -50,20 +49,28 @@ class LoadingDialog extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
           decoration: BoxDecoration(
-            boxShadow: [BoxShadow(color: Color(0x44000000), spreadRadius: 2)],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                spreadRadius: 0,
+              ),
+            ],
             borderRadius: BorderRadius.circular(5),
-            color: CupertinoColors.white,
+            color: Colors.white,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              CircularIndicator(colorIndicator: CupertinoColors.systemBlue),
+              CircularIndicator(colorIndicator: Colors.black),
               Visibility(
                 visible: loadingMessage != null,
                 child: Container(
                   margin: EdgeInsets.only(top: 10),
-                  child: Text(loadingMessage == null ? "" : loadingMessage!),
+                  child: Text(
+                    loadingMessage == null ? "" : loadingMessage!,
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
               ),
             ],

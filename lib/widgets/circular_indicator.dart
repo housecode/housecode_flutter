@@ -4,14 +4,15 @@
     createTime:2021-08-26 19:15
  */
 
-import 'dart:io' show Platform;
+// import 'dart:io' show Platform;
+import 'package:universal_io/io.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// circular indicator based on platform style
 // ignore: must_be_immutable
 class CircularIndicator extends StatelessWidget {
-  /// android only
+  /// non iOS only
   Color? colorIndicator;
 
   /// ios only
@@ -29,9 +30,11 @@ class CircularIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (iosOnly ?? false)
-        ? _cupertino(context)
-        : (Platform.isIOS ? _cupertino(context) : _material(context));
+    return Material(
+      child: Platform.isIOS || (iosOnly ?? false)
+          ? _cupertino(context)
+          : _material(context),
+    );
   }
 
   Widget _cupertino(BuildContext context) {

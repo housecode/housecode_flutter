@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _isASync = false;
-  List<String> _items = [];
+  List<String?> _items = [];
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
       child: LoadingDialog(
         isAsync: _isASync,
         loadingMessage: "Load Data...",
-        opacity: 0.8,
         child: WillPopScope(
           onWillPop: () => Future(() => true),
           child: Scaffold(
@@ -81,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       separatorBuilder: (c, i) =>
                           Separator(margin: EdgeInsets.only(left: 12)),
                       itemBuilder: (c, i) {
-                        return TextCell(title: _items[i].capitalize());
+                        return TextCell(
+                            title: _items[i].coalesce("-").capitalize());
                       },
                     ),
                   ),
@@ -101,7 +101,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
     Future.delayed(Duration(seconds: 2), () {
       setState(() {
-        _items = List.generate(50, (index) => "item number ${index + 1}");
+        _items = List.generate(
+            50, (index) => index == 15 ? null : "item number ${index + 1}");
         _isASync = false;
       });
     });
