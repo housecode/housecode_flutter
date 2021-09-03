@@ -19,7 +19,7 @@ A set of extensions and widgets by Housecode.Net to simplify some function and r
 * Add Checkbox widget
 * Add Dialogs widget
 * Add CircularIndicator widget
-* Add LoadingDialog widget
+* Add Loading widget
 * Add Separator widget
 * Add SelectableViewCell widget
 * Add CheckboxCell widget
@@ -32,7 +32,7 @@ add this line to pubspec.yaml
 
    dependencies:
 
-    housecode: ^1.0.2+2
+    housecode: ^1.0.3
 
 
 ```

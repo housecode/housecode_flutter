@@ -1,3 +1,7 @@
+## 1.0.3
+* NOTE: LoadingDialog has removed and changed with Loading class
+* Add Loading class for modal loading dialog
+
 ## 1.0.2+2
 * Fix web support issue
 * Update LoadingDialog background

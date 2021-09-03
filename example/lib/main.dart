@@ -38,73 +38,62 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool _isASync = false;
   List<String?> _items = [];
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: LoadingDialog(
-        isAsync: _isASync,
-        loadingMessage: "Load Data...",
-        child: WillPopScope(
-          onWillPop: () => Future(() => true),
-          child: Scaffold(
-            appBar: AppBar(
-              title: Text(widget.title),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    _showPicker();
-                  },
-                  icon: Icon(Icons.access_alarms),
-                ),
-              ],
-            ),
-            body: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Align(
-                    alignment: Alignment.center,
-                    child: ElevatedButton(
-                      onPressed: _load,
-                      child: Text("LOAD"),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: _items.length,
-                      separatorBuilder: (c, i) =>
-                          Separator(margin: EdgeInsets.only(left: 12)),
-                      itemBuilder: (c, i) {
-                        return TextCell(
-                            title: _items[i].coalesce("-").capitalize());
-                      },
-                    ),
-                  ),
-                ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _showPicker();
+            },
+            icon: Icon(Icons.access_alarms),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                onPressed: _load,
+                child: Text("LOAD"),
               ),
             ),
-          ),
+            Expanded(
+              child: ListView.separated(
+                itemCount: _items.length,
+                separatorBuilder: (c, i) =>
+                    Separator(margin: EdgeInsets.only(left: 12)),
+                itemBuilder: (c, i) {
+                  return TextCell(title: _items[i].coalesce("-").capitalize());
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
+  Loading _loading = Loading();
+
   void _load() {
-    setState(() {
-      _isASync = true;
-    });
+    _loading.show(context, message: "Load data...");
 
     Future.delayed(Duration(seconds: 2), () {
       setState(() {
         _items = List.generate(
             50, (index) => index == 15 ? null : "item number ${index + 1}");
-        _isASync = false;
       });
+      _loading.hide();
     });
   }
 

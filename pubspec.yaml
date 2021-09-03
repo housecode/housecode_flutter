@@ -1,6 +1,6 @@
 name: housecode
 description: A set of extensions and widgets by Housecode.Net to simplify some function and re-useable widgets.
-version: 1.0.2+2
+version: 1.0.3
 homepage: https://github.com/housecode/housecode_flutter
 
 environment:
@@ -11,7 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  modal_progress_hud_alt: ^1.0.0
   cupertino_icons: ^1.0.2
   universal_io: ^2.0.4
 
