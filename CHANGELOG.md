@@ -1,3 +1,9 @@
+## 1.0.4
+* Add SwitchCell widget
+* Add DatePicker widget
+* Add TimePicker widget
+* Add DateTimeCell widget
+
 ## 1.0.3
 * NOTE: LoadingDialog has removed and changed with Loading class
 * Add Loading class for modal loading dialog

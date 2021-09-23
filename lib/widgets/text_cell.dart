@@ -21,8 +21,11 @@ class TextCell extends StatefulWidget {
     this.padding,
     this.hasUneventRows = false,
     this.showIcon = true,
+    this.boldTitle = false,
+    this.fontSize,
   });
 
+  bool boldTitle;
   final String title;
   late String? detail;
   bool? hasUneventRows;
@@ -31,6 +34,7 @@ class TextCell extends StatefulWidget {
   Color? titleColor;
   Color? detailColor;
   bool? showIcon;
+  double? fontSize;
 
   @override
   State<StatefulWidget> createState() => _TextCellState();
@@ -55,7 +59,11 @@ class _TextCellState extends State<TextCell> {
         padding: EdgeInsets.only(left: 2),
         child: Text(
           widget.title,
-          style: TextStyle(color: widget.titleColor ?? Colors.black),
+          style: TextStyle(
+            color: widget.titleColor ?? Colors.black,
+            fontWeight: widget.boldTitle ? FontWeight.bold : null,
+            fontSize: widget.fontSize == null ? null : widget.fontSize!,
+          ),
         ),
       ),
       onTap: widget.onTap == null
@@ -70,7 +78,10 @@ class _TextCellState extends State<TextCell> {
         child: Text(
           _detail,
           textAlign: TextAlign.right,
-          style: TextStyle(color: widget.detailColor ?? Colors.black),
+          style: TextStyle(
+            color: widget.detailColor ?? Colors.black,
+            fontSize: widget.fontSize == null ? null : widget.fontSize!,
+          ),
         ),
       ),
     );

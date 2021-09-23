@@ -13,7 +13,10 @@ A set of extensions and widgets by Housecode.Net to simplify some function and r
 
 ## Features
 * Add some extensions
-* Add Notifier property
+* Add SwitchCell widget
+* Add DatePicker widget
+* Add TimePicker widget
+* Add DateTimeCell widget
 * Add ViewCell widget
 * Add TextCell widget
 * Add Checkbox widget
@@ -23,6 +26,7 @@ A set of extensions and widgets by Housecode.Net to simplify some function and r
 * Add Separator widget
 * Add SelectableViewCell widget
 * Add CheckboxCell widget
+* Add Notifier property
 
 ## Usage
 
@@ -32,7 +36,7 @@ add this line to pubspec.yaml
 
    dependencies:
 
-    housecode: ^1.0.3
+    housecode: ^1.0.4
 
 
 ```

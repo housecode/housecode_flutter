@@ -19,7 +19,7 @@ class SelectableViewCell extends StatelessWidget {
   });
 
   final Widget child;
-  final bool selected;
+  bool selected;
   Color? iconColor;
   IconData? selectedIcon;
   void Function()? onTap;

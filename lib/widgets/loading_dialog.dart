@@ -1,16 +1,26 @@
+/*
+    Author: Housecode
+    Email: info@housecode.net
+    createTime:2021-08-26 19:15
+ */
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:housecode/widgets/circular_indicator.dart';
 
+/// Loading class to show/hide loading dalog
 class Loading {
-  void show(BuildContext context, {String? message}) {
+  void show(BuildContext context, {String? message, bool useLight = true}) {
+    var loading = _loading(loadingMessage: message);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext ctx) {
         popContext = ctx;
-        return _loading(loadingMessage: message);
+        return useLight
+            ? Theme(data: ThemeData.light(), child: loading)
+            : loading;
       },
     );
   }

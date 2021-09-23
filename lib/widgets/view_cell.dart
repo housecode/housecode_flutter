@@ -19,6 +19,7 @@ class ViewCell extends StatelessWidget {
     this.showIcon,
     this.iconColor,
     this.icon,
+    this.enableSelection = true,
   });
 
   final Widget child;
@@ -28,6 +29,7 @@ class ViewCell extends StatelessWidget {
   IconData? icon;
   Color? iconColor;
   bool? showIcon;
+  bool enableSelection;
 
   void Function()? onTap;
 
@@ -35,7 +37,9 @@ class ViewCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       child: InkWell(
-        onTap: onTap ?? () {}, // always set onTap to activate ripple effect
+        onTap: enableSelection
+            ? onTap ?? () {}
+            : null, // always set onTap to activate ripple effect
         child: Ink(
           color: Colors.white,
           child: Container(
@@ -46,25 +50,28 @@ class ViewCell extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 child,
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      detail ?? Container(),
-                      Container(
-                          width: onTap != null && (showIcon ?? false) == true
-                              ? 5
-                              : 0),
-                      Icon(
-                        icon ?? CupertinoIcons.chevron_right,
-                        color: iconColor ?? CupertinoColors.systemBlue,
-                        size: onTap != null && (showIcon ?? false) == true
-                            ? 16
-                            : 0,
-                      ),
-                    ],
+                Visibility(
+                  visible: detail != null,
+                  child: Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        detail ?? Container(),
+                        Container(
+                            width: onTap != null && (showIcon ?? false) == true
+                                ? 5
+                                : 0),
+                        Icon(
+                          icon ?? CupertinoIcons.chevron_right,
+                          color: iconColor ?? CupertinoColors.systemBlue,
+                          size: onTap != null && (showIcon ?? false) == true
+                              ? 16
+                              : 0,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
