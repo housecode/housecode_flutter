@@ -12,7 +12,24 @@ import 'package:intl/intl.dart';
 
 typedef DateTimeSelected = void Function(DateTime dateTime);
 
-class DateTimeCell extends StatefulWidget {
+@Deprecated("Use DateTimePickerCell instead.")
+class DateTimeCell extends DateTimePickerCell {
+  DateTimeCell(
+    String title,
+    DateTimeSelected onSelected, {
+    DateTimeCellMode mode = DateTimeCellMode.Date,
+    DateTime? initialDateTime,
+    String? dateTimeFormat,
+  }) : super(
+          title,
+          onSelected,
+          dateTimeFormat: dateTimeFormat,
+          initialDateTime: initialDateTime,
+          mode: mode,
+        );
+}
+
+class DateTimePickerCell extends StatefulWidget {
   final DateTimeCellMode mode;
   final DateTime initialDateTime;
   final DateTimeSelected onSelected;
@@ -22,7 +39,7 @@ class DateTimeCell extends StatefulWidget {
   /// [mode] default is [DateTimeCellMode.Date]
   ///
   /// [initialDateTime] if null then use [DateTime.now()]
-  DateTimeCell(
+  DateTimePickerCell(
     String title,
     DateTimeSelected onSelected, {
     this.mode = DateTimeCellMode.Date,
@@ -36,7 +53,7 @@ class DateTimeCell extends StatefulWidget {
   State<StatefulWidget> createState() => _DateTimeCellState();
 }
 
-class _DateTimeCellState extends State<DateTimeCell> {
+class _DateTimeCellState extends State<DateTimePickerCell> {
   String format = "";
 
   @override

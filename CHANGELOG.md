@@ -1,3 +1,7 @@
+## 1.0.5
+* Add Picker ViewCell widget
+* Improve some widgets
+
 ## 1.0.4
 * Add SwitchCell widget
 * Add DatePicker widget

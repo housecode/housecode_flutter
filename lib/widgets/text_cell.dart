@@ -14,7 +14,7 @@ import 'package:housecode/widgets/view_cell.dart';
 class TextCell extends StatefulWidget {
   TextCell({
     required this.title,
-    this.detail,
+    this.detail = "",
     this.onTap,
     this.titleColor,
     this.detailColor,
@@ -23,11 +23,12 @@ class TextCell extends StatefulWidget {
     this.showIcon = true,
     this.boldTitle = false,
     this.fontSize,
+    this.expanded = true,
   });
 
   bool boldTitle;
   final String title;
-  late String? detail;
+  String detail;
   bool? hasUneventRows;
   late ValueChanged<ValueChanged<String>>? onTap;
   EdgeInsetsGeometry? padding;
@@ -35,23 +36,22 @@ class TextCell extends StatefulWidget {
   Color? detailColor;
   bool? showIcon;
   double? fontSize;
+  final bool expanded;
 
   @override
   State<StatefulWidget> createState() => _TextCellState();
 }
 
 class _TextCellState extends State<TextCell> {
-  String _detail = "";
-
   @override
   void initState() {
     super.initState();
-    _detail = widget.detail ?? "";
   }
 
   @override
   Widget build(BuildContext context) {
     return ViewCell(
+      expanded: widget.expanded,
       hasUneventRows: widget.hasUneventRows,
       showIcon: !(widget.showIcon ?? true) ? false : widget.onTap != null,
       padding: widget.padding ?? EdgeInsets.only(left: 10, right: 10),
@@ -71,12 +71,12 @@ class _TextCellState extends State<TextCell> {
           : () {
               if (widget.onTap != null)
                 widget.onTap!((text) {
-                  setState(() => _detail = text);
+                  setState(() => widget.detail = text);
                 });
             },
       detail: Flexible(
         child: Text(
-          _detail,
+          widget.detail,
           textAlign: TextAlign.right,
           style: TextStyle(
             color: widget.detailColor ?? Colors.black,

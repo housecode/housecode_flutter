@@ -36,11 +36,14 @@ class _SwitchCellState extends State<SwitchCell> {
   @override
   Widget build(BuildContext context) {
     return ViewCell(
-      child: Text(
-        widget.title,
-        style: TextStyle(
-          fontSize: 16,
-          color: Colors.black,
+      child: Container(
+        padding: EdgeInsets.only(left: 2),
+        child: Text(
+          widget.title,
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.black,
+          ),
         ),
       ),
       enableSelection: false,

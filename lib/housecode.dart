@@ -18,6 +18,7 @@ export 'widgets/text_cell.dart';
 export 'widgets/view_cell.dart';
 export 'widgets/switch_cell.dart';
 export 'widgets/datetime_cell.dart';
+export 'widgets/picker_view_cell.dart';
 export 'ext/notifier.dart';
 export 'ext/utils.dart';
 

@@ -8,7 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// show message dialog
-void showMessage(BuildContext context, String message, {bool useLight = true}) {
+void showMessage(BuildContext context, String message,
+    {bool useLight = true, void Function()? onOk}) {
   var dialog = (BuildContext ctx) => CupertinoAlertDialog(
         content: Center(
           child: Container(
@@ -20,7 +21,10 @@ void showMessage(BuildContext context, String message, {bool useLight = true}) {
           CupertinoDialogAction(
             child: Text("OK"),
             isDefaultAction: true,
-            onPressed: () => Navigator.pop(ctx),
+            onPressed: () {
+              Navigator.pop(ctx);
+              if (onOk != null) onOk();
+            },
           )
         ],
       );
@@ -87,10 +91,11 @@ void showPicker(
   PickerItemSelected? onDone,
   bool useLight = true,
   Color textColor = Colors.black,
+  int? startIndex,
   String? title,
 }) {
   var selected = 0;
-  var controller = FixedExtentScrollController();
+  var controller = FixedExtentScrollController(initialItem: startIndex ?? 0);
   var views = items
       .map((item) => Center(
               child: Text(

@@ -20,6 +20,7 @@ class ViewCell extends StatelessWidget {
     this.iconColor,
     this.icon,
     this.enableSelection = true,
+    this.expanded = true,
   });
 
   final Widget child;
@@ -30,6 +31,7 @@ class ViewCell extends StatelessWidget {
   Color? iconColor;
   bool? showIcon;
   bool enableSelection;
+  final bool expanded;
 
   void Function()? onTap;
 
@@ -51,10 +53,16 @@ class ViewCell extends StatelessWidget {
               children: <Widget>[
                 child,
                 Visibility(
+                  visible: !expanded,
+                  child: Container(width: 5),
+                ),
+                Visibility(
                   visible: detail != null,
                   child: Expanded(
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: expanded
+                          ? MainAxisAlignment.end
+                          : MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [

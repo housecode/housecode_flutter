@@ -22,6 +22,7 @@ class CheckboxCell extends StatefulWidget {
     this.titleColor,
     this.detailColor,
     required this.onChecked,
+    this.onStart,
   }) : super(key: key);
 
   bool checked;
@@ -32,6 +33,7 @@ class CheckboxCell extends StatefulWidget {
 
   final ValueChanged<bool> onChecked;
   ValueChanged<ValueChanged<String>>? onTap;
+  String? Function()? onStart;
 
   @override
   State<StatefulWidget> createState() => CheckboxCellState();
@@ -47,10 +49,17 @@ class CheckboxCellState extends State<CheckboxCell> {
 
   String _detail = "";
 
+  void setDetail(String text) {
+    setState(() {
+      _detail = text;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _detail = widget.detail ?? "";
+    if (widget.onStart != null) _detail = widget.onStart!() ?? "";
   }
 
   @override
