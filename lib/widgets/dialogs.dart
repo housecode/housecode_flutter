@@ -60,7 +60,10 @@ Future<T?> showConfirmation<T>(
         actions: [
           CupertinoDialogAction(
             child: Text("Yes"),
-            onPressed: () => onAccept(),
+            onPressed: () {
+              Navigator.pop(ctx);
+              onAccept();
+            },
           ),
           CupertinoDialogAction(
             child: Text("No"),
