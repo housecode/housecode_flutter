@@ -1,3 +1,6 @@
+## 1.0.6
+* Add Stack ViewCell widget
+
 ## 1.0.5
 * Add Picker ViewCell widget
 * Improve some widgets

@@ -13,6 +13,7 @@ A set of extensions and widgets by Housecode.Net to simplify some function and r
 
 ## Features
 * Add some extensions
+* Add StackViewCell widget
 * Add PickerViewCell widget
 * Add SwitchCell widget
 * Add DatePicker widget
@@ -37,7 +38,7 @@ add this line to pubspec.yaml
 
    dependencies:
 
-    housecode: ^1.0.5
+    housecode: ^1.0.6
 
 
 ```

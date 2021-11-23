@@ -67,6 +67,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text("LOAD"),
               ),
             ),
+            Separator(),
+            StackViewCell(
+              children: [
+                Text("LOAD One"),
+                Text("LOAD Two"),
+                Text("LOAD Three")
+              ],
+            ),
+            Separator(),
             Expanded(
               child: ListView.separated(
                 itemCount: _items.length,
