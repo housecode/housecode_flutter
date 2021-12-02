@@ -82,7 +82,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 separatorBuilder: (c, i) =>
                     Separator(margin: EdgeInsets.only(left: 12)),
                 itemBuilder: (c, i) {
-                  return TextCell(title: _items[i].coalesce("-").capitalize());
+                  switch (i) {
+                    case 0:
+                      return CheckboxCell(
+                          title: _items[i].coalesce("-").capitalize(),
+                          onChecked: (checked) {});
+                    case 1:
+                      return DateTimePickerCell(
+                          _items[i].coalesce("-").capitalize(), (dateTime) {});
+                    case 2:
+                      return PickerViewCell(
+                          title: _items[i].coalesce("-").capitalize(),
+                          items: "A B C D E F".split(' '));
+                    case 3:
+                      return SelectableViewCell(
+                          child: Text(_items[i].coalesce("-").capitalize()),
+                          selected: false);
+                    default:
+                      return TextCell(
+                          title: _items[i].coalesce("-").capitalize());
+                  }
                 },
               ),
             ),

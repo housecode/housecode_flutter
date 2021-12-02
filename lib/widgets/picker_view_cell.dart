@@ -24,7 +24,10 @@ class PickerViewCell extends StatefulWidget {
     this.onSelected,
     this.pickerSize,
     this.index,
+    this.isAsync = false,
   }) : assert(items.isNotEmpty, "items mus have at least 1 value(s)");
+
+  final bool isAsync;
 
   @override
   State<StatefulWidget> createState() => _PickerViewCellState();
@@ -48,6 +51,7 @@ class _PickerViewCellState extends State<PickerViewCell> {
           color: Colors.black,
         ),
       ),
+      isAsync: widget.isAsync,
       hasUneventRows: true,
       padding: EdgeInsets.only(left: 12, top: 8, right: 10, bottom: 8),
       enableSelection: false,

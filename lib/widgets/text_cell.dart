@@ -24,8 +24,10 @@ class TextCell extends StatefulWidget {
     this.boldTitle = false,
     this.fontSize,
     this.expanded = true,
+    this.isAsync = false,
   });
 
+  final bool isAsync;
   bool boldTitle;
   final String title;
   String detail;
@@ -66,6 +68,7 @@ class _TextCellState extends State<TextCell> {
           ),
         ),
       ),
+      isAsync: widget.isAsync,
       onTap: widget.onTap == null
           ? null
           : () {

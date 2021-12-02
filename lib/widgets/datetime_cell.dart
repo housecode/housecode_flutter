@@ -20,11 +20,13 @@ class DateTimeCell extends DateTimePickerCell {
     DateTimeCellMode mode = DateTimeCellMode.Date,
     DateTime? initialDateTime,
     String? dateTimeFormat,
+    bool isAsync = false,
   }) : super(
           title,
           onSelected,
           dateTimeFormat: dateTimeFormat,
           initialDateTime: initialDateTime,
+          isAsync: isAsync,
           mode: mode,
         );
 }
@@ -44,10 +46,13 @@ class DateTimePickerCell extends StatefulWidget {
     DateTimeSelected onSelected, {
     this.mode = DateTimeCellMode.Date,
     DateTime? initialDateTime,
+    this.isAsync = false,
     this.dateTimeFormat,
   })  : this.title = title,
         this.onSelected = onSelected,
         this.initialDateTime = initialDateTime ?? DateTime.now();
+
+  final bool isAsync;
 
   @override
   State<StatefulWidget> createState() => _DateTimeCellState();
@@ -78,6 +83,7 @@ class _DateTimeCellState extends State<DateTimePickerCell> {
           color: Colors.black,
         ),
       ),
+      isAsync: widget.isAsync,
       hasUneventRows: true,
       padding: EdgeInsets.only(left: 12, top: 8, right: 10, bottom: 8),
       enableSelection: false,

@@ -6,12 +6,14 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:housecode/widgets/circular_indicator.dart';
 
 /// view cell for Listview itemBuilder
 // ignore: must_be_immutable
 class ViewCell extends StatelessWidget {
   ViewCell({
     required this.child,
+    this.isAsync = false,
     this.hasUneventRows = false,
     this.padding,
     this.detail,
@@ -32,6 +34,7 @@ class ViewCell extends StatelessWidget {
   bool? showIcon;
   bool enableSelection;
   final bool expanded;
+  final bool isAsync;
 
   void Function()? onTap;
 
@@ -66,7 +69,7 @@ class ViewCell extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        detail ?? Container(),
+                        isAsync ? CircularIndicator() : detail ?? Container(),
                         Container(
                             width: onTap != null && (showIcon ?? false) == true
                                 ? 5

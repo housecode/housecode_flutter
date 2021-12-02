@@ -19,7 +19,10 @@ class StackViewCell extends StatelessWidget {
     this.showIcon = false,
     this.padding,
     this.onTap,
+    this.isAsync = false,
   });
+
+  final bool isAsync;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,7 @@ class StackViewCell extends StatelessWidget {
       onTap: onTap ?? () {},
       showIcon: showIcon,
       hasUneventRows: true,
+      isAsync: isAsync,
       padding: padding ?? EdgeInsets.fromLTRB(12, 5, 5, 5),
       detail: showIcon ? Text("") : null,
       child: Column(

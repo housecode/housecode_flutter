@@ -16,24 +16,24 @@ class CheckboxCell extends StatefulWidget {
   CheckboxCell({
     GlobalKey? key,
     this.checked = false,
-    this.title,
+    required this.title,
     this.onTap,
     this.detail,
     this.titleColor,
     this.detailColor,
     required this.onChecked,
-    this.onStart,
+    this.isAsync = false,
   }) : super(key: key);
 
+  final bool isAsync;
   bool checked;
-  String? title;
+  final String title;
   String? detail;
   Color? titleColor;
   Color? detailColor;
 
   final ValueChanged<bool> onChecked;
   ValueChanged<ValueChanged<String>>? onTap;
-  String? Function()? onStart;
 
   @override
   State<StatefulWidget> createState() => CheckboxCellState();
@@ -47,25 +47,22 @@ class CheckboxCellState extends State<CheckboxCell> {
     _checkboxState.currentState!.setChecked(isChecked);
   }
 
-  String _detail = "";
-
   void setDetail(String text) {
     setState(() {
-      _detail = text;
+      widget.detail = text;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _detail = widget.detail ?? "";
-    if (widget.onStart != null) _detail = widget.onStart!() ?? "";
   }
 
   @override
   Widget build(BuildContext context) {
     return ViewCell(
       showIcon: widget.onTap != null,
+      isAsync: widget.isAsync,
       child: Container(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,7 +77,7 @@ class CheckboxCellState extends State<CheckboxCell> {
               width: 10,
             ),
             Text(
-              widget.title == null ? "" : widget.title!,
+              widget.title,
               style: TextStyle(color: widget.titleColor ?? Colors.black),
             ),
           ],
@@ -92,13 +89,13 @@ class CheckboxCellState extends State<CheckboxCell> {
           widget.onTap!((text) {
             if (!_checkboxState.currentState!.checked || widget.onTap == null)
               return;
-            setState(() => _detail = text);
+            setState(() => widget.detail = text);
           });
         }
       },
       detail: Flexible(
         child: Text(
-          _detail,
+          widget.detail ?? "",
           textAlign: TextAlign.right,
           style: TextStyle(
               color: widget.detailColor ?? CupertinoColors.systemGrey),

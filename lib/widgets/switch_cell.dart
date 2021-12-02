@@ -10,27 +10,28 @@ import 'package:housecode/widgets/view_cell.dart';
 
 typedef SwitchValueChanged = void Function(bool isEnable);
 
+// ignore: must_be_immutable
 class SwitchCell extends StatefulWidget {
-  final bool initialValue;
+  bool isChecked;
   final String title;
   final SwitchValueChanged onChanged;
 
-  SwitchCell(bool value, String title, SwitchValueChanged onChanged)
-      : this.initialValue = value,
+  SwitchCell(bool value, String title, SwitchValueChanged onChanged,
+      {this.isAsync = false})
+      : this.isChecked = value,
         this.onChanged = onChanged,
         this.title = title;
+
+  final bool isAsync;
 
   @override
   State<StatefulWidget> createState() => _SwitchCellState();
 }
 
 class _SwitchCellState extends State<SwitchCell> {
-  late bool _value;
-
   @override
   void initState() {
     super.initState();
-    _value = widget.initialValue;
   }
 
   @override
@@ -46,14 +47,15 @@ class _SwitchCellState extends State<SwitchCell> {
           ),
         ),
       ),
+      isAsync: widget.isAsync,
       enableSelection: false,
       detail: CupertinoSwitch(
-        value: _value,
+        value: widget.isChecked,
         onChanged: (value) {
           setState(() {
-            _value = value;
+            widget.isChecked = value;
           });
-          widget.onChanged(_value);
+          widget.onChanged(widget.isChecked);
         },
       ),
     );
