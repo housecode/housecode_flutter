@@ -38,7 +38,7 @@ add this line to pubspec.yaml
 
    dependencies:
 
-    housecode: ^1.0.6
+    housecode: ^1.0.7
 
 
 ```

@@ -4,7 +4,6 @@
     createTime:2021-08-26 19:15
  */
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:housecode/widgets/view_cell.dart';

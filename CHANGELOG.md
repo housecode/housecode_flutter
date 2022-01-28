@@ -1,3 +1,7 @@
+## 1.0.7
+* Add showActionSheet function
+* Update and improve some codes
+
 ## 1.0.6
 * Add Stack ViewCell widget
 

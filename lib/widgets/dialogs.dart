@@ -342,3 +342,68 @@ void showDatePicker(
     },
   );
 }
+
+void showActionSheet(
+  BuildContext context,
+  List<String> items, {
+  PickerItemSelected? itemSelected,
+  bool useLight = true,
+  Color textColor = Colors.black,
+  String? title,
+  String? message,
+}) {
+  var views = (c) => items
+      .map((item) => CupertinoActionSheetAction(
+            child: Center(
+              child: Text(
+                item,
+                style: TextStyle(color: textColor),
+              ),
+            ),
+            onPressed: () {
+              if (itemSelected != null) itemSelected(items.indexOf(item));
+              Navigator.pop(c);
+            },
+          ))
+      .toList();
+
+  var picker = (c) => CupertinoActionSheet(
+        actions: views(c),
+        title: title == null
+            ? null
+            : Text(
+                title,
+                style: TextStyle(
+                  color: textColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        message: message == null
+            ? null
+            : Text(
+                message,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: textColor,
+                ),
+              ),
+        cancelButton: CupertinoActionSheetAction(
+          child: Text(
+            "Cancel",
+            style: TextStyle(color: textColor),
+          ),
+          onPressed: () {
+            Navigator.pop(c);
+          },
+        ),
+      );
+
+  showCupertinoModalPopup(
+    context: context,
+    builder: (c) {
+      return useLight
+          ? Theme(data: ThemeData.light(), child: picker(c))
+          : picker(c);
+    },
+  );
+}
