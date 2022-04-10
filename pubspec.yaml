@@ -1,6 +1,6 @@
 name: housecode
 description: A set of extensions and widgets by Housecode.Net to simplify some function and re-useable widgets.
-version: 1.0.7
+version: 1.0.7+1
 homepage: https://github.com/housecode/housecode_flutter
 
 environment:

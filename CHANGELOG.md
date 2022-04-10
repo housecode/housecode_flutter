@@ -1,3 +1,6 @@
+## 1.0.7+1
+* Bugfix
+
 ## 1.0.7
 * Add showActionSheet function
 * Update and improve some codes

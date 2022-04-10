@@ -100,7 +100,25 @@ class _MyHomePageState extends State<MyHomePage> {
                           selected: false);
                     default:
                       return TextCell(
-                          title: _items[i].coalesce("-").capitalize());
+                        title: _items[i].coalesce("-").capitalize(),
+                        onTap: i == 4 || i == 5 || i == 6
+                            ? (callback) {
+                                if (i == 4) {
+                                  showMessage(context, "Hello World!");
+                                } else if (i == 5) {
+                                  showConfirm(context, "Are you sure?", () {});
+                                } else if (i == 6) {
+                                  showActionSheet(
+                                    context,
+                                    ["Option 1", "Option 1"],
+                                    title: "Choose",
+                                    message: "One of",
+                                    textColor: CupertinoColors.systemBlue,
+                                  );
+                                }
+                              }
+                            : null,
+                      );
                   }
                 },
               ),

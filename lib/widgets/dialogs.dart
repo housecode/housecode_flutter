@@ -29,7 +29,7 @@ void showMessage(BuildContext context, String message,
         ],
       );
 
-  showDialog(
+  showCupertinoDialog(
     context: context,
     builder: (BuildContext ctx) => useLight
         ? Theme(

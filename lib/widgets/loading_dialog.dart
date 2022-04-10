@@ -27,7 +27,10 @@ class Loading {
   BuildContext? popContext;
 
   void hide() {
-    if (popContext != null) Navigator.pop(popContext!);
+    if (popContext != null) {
+      Navigator.pop(popContext!);
+      popContext = null;
+    }
   }
 }
 
